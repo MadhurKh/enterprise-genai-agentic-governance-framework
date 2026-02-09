@@ -23,6 +23,7 @@ This framework applies to:
 - Client-facing AI products and platforms
 - Agentic AI systems with partial or conditional autonomy
 - AI systems that influence decisions, recommendations, or actions
+- Vendor-provided AI services and third-party model integrations
 
 It is intended for use by:
 

@@ -34,6 +34,7 @@ This structure aligns with **European enterprise governance best practices**, wh
 - Scoring scale and weighting model
 - Dimension-level scoring anchors
 - Decision thresholds
+- Vendor Risk & Sovereignty Scoring
 - Mandatory controls by risk tier
 
 ---
@@ -42,6 +43,7 @@ This structure aligns with **European enterprise governance best practices**, wh
 
 - GenAI reference architecture
 - Agentic AI reference architecture
+- Guardrail & Monitoring Middleware
 - Schema contracts
 - Escalation and failure patterns
 

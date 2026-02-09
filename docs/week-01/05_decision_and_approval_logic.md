@@ -10,9 +10,9 @@ This section ensures that evaluation outcomes translate into **clear, enforceabl
 
 Every AI use case results in one of the following:
 
-- **Approve**
-- **Pilot with Controls**
-- **Block / Redesign**
+- **Approve:** Acceptable risk, governance implemented, ownership confirmed.
+- **Pilot with Controls:** Restricted scope, mandatory HITL, time-bound, re-evaluation required.
+- **Block / Redesign:** Unacceptable risk, insufficient governance, or disproportionate impact.
 
 No use case may proceed without a documented outcome.
 
@@ -48,12 +48,14 @@ No use case may proceed without a documented outcome.
 - AI Product Owner
 - Business Owner
 - Risk / Compliance
+- Relevant Domain SME (as applicable for material business or compliance impact)
 
 ### Tier 3
 - Business Executive
 - Legal
 - Risk Management
 - AI Platform Owner
+- Independent AI Auditor
 
 ---
 

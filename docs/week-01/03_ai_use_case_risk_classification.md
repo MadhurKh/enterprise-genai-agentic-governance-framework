@@ -86,8 +86,10 @@ AI systems that execute or trigger actions with financial, legal, or regulatory 
 - Continuous monitoring
 
 ### Autonomy
-- Fully autonomous execution is **not permitted**
-- Conditional execution with human authorization only
+- Fully autonomous execution is **strictly prohibited for open-ended or judgment-based tasks**.
+- **Conditional Autonomy:** Execution is permitted only within **explicitly pre-authorized, policy-bound, and reversible domains**
+  (e.g., automated refunds below a fixed monetary threshold, or internal routing of low-risk tickets).
+- All other actions require explicit human authorization prior to execution.
 
 ---
 

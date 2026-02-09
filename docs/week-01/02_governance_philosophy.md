@@ -34,7 +34,14 @@ Human oversight is **mandatory** when AI systems:
 - Communicate externally with customers or partners
 - Influence regulatory or compliance-sensitive processes
 
-HITL is a **design requirement**, not an exception-handling mechanism.
+### Defined Oversight Roles and Control Layers
+HITL is a **design requirement**, not an exception-handling mechanism. Oversight must be categorized by:
+- **End-User Verification:** The direct user confirms the AI's suggestion before proceeding.
+- **Expert Review:** A Subject Matter Expert (SME) audits samples of AI decisions.
+- **Independent AI Auditor:** A separate governance function reviews logs and logic for systemic bias or drift.
+
+These roles are **not interchangeable** and must be applied proportionally based on risk tier.
+
 
 ---
 
