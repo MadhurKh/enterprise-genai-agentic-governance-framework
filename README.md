@@ -7,6 +7,9 @@ The framework is aligned with **European enterprise governance best practices**,
 It is designed for leaders responsible for **owning AI decisions**, not just building AI solutions.
 
 ---
+## Executive Summary (1-page)
+
+- **Executive Summary PDF** → `docs/executive-summary/Executive_Summary.pdf`
 
 ## Why This Framework Exists
 
