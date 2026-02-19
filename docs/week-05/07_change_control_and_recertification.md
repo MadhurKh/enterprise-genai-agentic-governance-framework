@@ -5,6 +5,10 @@
 GenAI and agentic systems change frequently (models, prompts, tools, data, policies).  
 Change control prevents silent risk drift and ensures approvals remain defensible.
 
+This template covers:
+- technical change (code/config/model)
+- **context drift** (business/regulatory/environmental changes without code changes)
+
 ---
 
 ## What Triggers Re-Certification
@@ -39,6 +43,13 @@ Re-certification is required when any of the following change:
 - retention policy changes
 - access roles change
 
+### Business Context / Regulatory Change (Context Drift)
+- new or updated regulation impacting the use case (privacy, sector rules, AI regulations)
+- change in client/user population (more sensitive group, regulated segment)
+- change in use-case scope or decision criticality (used for higher-stakes decisions)
+- change in operating geography/residency expectations
+- incident, audit finding, or legal interpretation shift requiring control uplift
+
 ---
 
 ## Change Request Record
@@ -46,11 +57,25 @@ Re-certification is required when any of the following change:
 - Use case name / ID:
 - Current tier:
 - Environment affected: dev/pilot/prod
-- Change type: Model / Prompt / Tool / Policy / Data / Security / Other
+- Change type: Model / Prompt / Tool / Policy / Data / Security / Context Drift / Other
 - Change description:
 - Reason for change:
 - Owner:
 - Date submitted:
+
+---
+
+## Context Drift Assessment (Required if Change Type includes Context Drift)
+
+- What changed (business/regulatory/environment)?
+- Does this increase decision criticality? Yes/No
+- Does this change the impacted user group? Yes/No
+- Does this change residency or sovereignty expectations? Yes/No
+- Does this change acceptable risk posture for the enterprise? Yes/No
+
+If any “Yes”:
+- Re-run Tier classification (Week 1)
+- Re-run Scorecard + Gates (Week 5)
 
 ---
 

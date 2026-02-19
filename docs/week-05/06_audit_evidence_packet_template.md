@@ -40,10 +40,11 @@ Evidence links:
 
 ---
 
-## 3) Scorecard Evidence (Week 2)
+## 3) Scorecard Evidence (Week 2 + Week 5)
 
 Attach:
 - completed scorecard (dimension scores + rationales)
+- **evidence maturity levels** per dimension
 - tier weighting used
 - calculation proof (aggregate weighted score)
 
@@ -59,12 +60,12 @@ Evidence links:
 Attach:
 - completed gate checklist
 - proof artifacts per gate:
-  - HITL proof (screenshots/UX steps/log records)
+  - HITL proof (SOP + training completion record + UX steps/log records)
   - audit logging proof (event schemas/log samples)
-  - security controls proof (RBAC, encryption)
-  - autonomy bounds proof (policy rules, scopes)
-  - sovereignty proof (model gateway, region routing)
-  - circuit breaker proof (auto-trip test)
+  - security controls proof (RBAC, encryption, DLP as applicable)
+  - autonomy bounds proof (policy rules, scopes, action schemas)
+  - sovereignty proof (model gateway, region routing, fallback tests)
+  - circuit breaker proof (auto-trip test record)
   - kill switch proof (manual switch + drill record)
   - ownership proof (named accountable owners)
 
@@ -120,7 +121,22 @@ Evidence links:
 
 ---
 
-## 8) Residual Risks and Remediation Plan (Week 4 Pattern)
+## 8) Policy Exception Register (Required if any deviations exist)
+
+Purpose: Capture approved deviations from the framework (especially Minimum Controls) to keep the audit trail honest and complete.
+
+| Exception ID | Policy / Control Referenced | Deviation Description | Risk Introduced | Mitigation / Compensating Control | Approver (Role/Name) | Expiry / Review Date | Evidence Ref |
+|---|---|---|---|---|---|---|---|
+| EX-001 |  |  |  |  |  |  |  |
+
+**Rule:** Any exception must have:
+- explicit approval
+- compensating control (or documented acceptance)
+- expiry/review date
+
+---
+
+## 9) Residual Risks and Remediation Plan (Week 4 Pattern)
 
 Attach:
 - P0 / P1 / P2 remediation items
@@ -134,7 +150,7 @@ Evidence links:
 
 ---
 
-## 9) Final Approval Record
+## 10) Final Approval Record
 
 - Decision: Approve / Pilot with Controls / Block
 - Conditions:

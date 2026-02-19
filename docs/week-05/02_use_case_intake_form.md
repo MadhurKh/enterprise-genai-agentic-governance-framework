@@ -17,6 +17,7 @@
 ## 2) Business Context and Objective
 
 - **Business problem being solved (1–2 lines):**
+- **Alternative non-AI baseline:** (How could this be solved without GenAI? e.g., rules workflow, search + templates, additional staffing, training)
 - **Current baseline process:** (manual steps, cycle time, error rate)
 - **Target improvement:** (e.g., reduce review time by 40%, reduce rework by 25%)
 - **Expected business impact:** (time, cost, quality, risk reduction)

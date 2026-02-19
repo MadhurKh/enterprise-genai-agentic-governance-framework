@@ -36,7 +36,7 @@ These templates are designed to:
 
 ---
 
-## How to Use These Templates (Recommended Workflow)
+## Recommended Workflow (End-to-End)
 
 1. **Intake**  
    Complete the intake form for the use case and proposed deployment context.
@@ -58,6 +58,26 @@ These templates are designed to:
 
 7. **Change control**  
    Use recertification template whenever model/prompt/tool/policy changes occur.
+
+---
+
+## Roles & Responsibilities (RACI by Template)
+
+**R = Responsible (does the work)**  
+**A = Accountable (final owner / sign-off)**  
+**C = Consulted (must be involved)**  
+**I = Informed (kept in loop)**
+
+| Template | Business Owner | AI Product Owner | Eng / Platform Owner | Risk / Compliance | Legal | Domain SME | Independent AI Auditor |
+|---|---|---|---|---|---|---|---|
+| 02 Use-Case Intake Form | A | R | C | C | C (Tier 2/3) | C | I |
+| 03 Evaluation Scorecard | A | R | C | C | C (Tier 2/3) | C | C (Tier 3) |
+| 04 Hard Governance Gates | A | R | R | A (risk gates) | A (legal gates) | C | C (Tier 3) |
+| 05 Minimum Controls Checklist | I | A | R | C | C | C | C (Tier 3) |
+| 06 Audit Evidence Packet | A | R | R | C | C | C | A (Tier 3) |
+| 07 Change Control & Re-Certification | A | R | R | C | C | C | C (Tier 3) |
+
+**Note:** Tier 3 requires explicit involvement of Risk, Legal, and Independent AI Auditor as defined in Week 1/2.
 
 ---
 

@@ -155,6 +155,29 @@ Location: `docs/week-05/`
 
 ---
 
+### Week 6 — Operating Model (Completed)
+Location: `docs/week-06/`
+
+1. Operating Model Overview  
+   `docs/week-06/01_operating_model_overview.md`
+
+2. RACI and Decision Rights  
+   `docs/week-06/02_raci_and_decision_rights.md`
+
+3. Governance Cadence and Review Cycles  
+   `docs/week-06/03_governance_cadence_and_review_cycles.md`
+
+4. Exception Management and Policy Waivers  
+   `docs/week-06/04_exception_management_and_policy_waivers.md`
+
+5. Operational Assurance Plan  
+   `docs/week-06/05_operational_assurance_plan.md`
+
+6. Governance Metrics and KPIs  
+   `docs/week-06/06_governance_metrics_and_kpis.md`
+
+---
+
 ## Intended Audience
 
 This framework is intended for:
@@ -205,5 +228,5 @@ Created by an enterprise digital transformation leader with hands-on experience 
 
 ## Status
 
-🟢 **v1 Complete (Weeks 1–5)**  
-Next: **Week 6 — Operating Model + RACI + Governance Cadence** (how enterprises run this framework)
+🟢 **v1 Complete (Weeks 1–6)**  
+Next: **Week 7 — Starter Kit (Filled Examples + Adoption Guide)**

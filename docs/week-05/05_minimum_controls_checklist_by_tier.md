@@ -73,3 +73,17 @@ Operational:
 - [ ] Drift monitoring and behavior anomaly signals
 - [ ] Access reviews for privileged roles
 - [ ] Re-certification triggers defined (model/tool/policy changes)
+
+---
+
+## Control Escalation Rule (Non-Negotiable)
+
+Controls must **escalate with risk**, not convenience.
+
+If a system’s behavior or deployment context changes such that risk increases (e.g., broader user base, higher-stakes decisions, new data classes, expanded tool permissions, write authority), then one of the following must happen:
+
+1. **Controls are upgraded** to match the new risk level, **or**
+2. The use case is **re-classified** to a higher tier and re-approved, **or**
+3. The system is **blocked / rolled back** until governance alignment is restored.
+
+Downgrading controls (e.g., removing HITL checkpoints, weakening logging, reducing sovereignty safeguards) without formal re-evaluation is treated as a **governance breach**.

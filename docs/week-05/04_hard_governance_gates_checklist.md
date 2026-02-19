@@ -15,10 +15,16 @@ Requirement:
 - HITL role is explicitly defined (end-user vs SME vs auditor)
 - approval checkpoints exist where required by tier
 - override and escalation are supported and logged
+- **HITL competency is ensured** (humans understand what to verify, what not to trust, and when to escalate)
 
 Pass criteria:
 - Tier 2: end-user verification exists for decision-impacting outputs
 - Tier 3: explicit human authorization for out-of-bounds actions + auditor sampling plan
+- **Training and guidance documented** for HITL roles, including:
+  - verification checklist or SOP
+  - examples of known failure patterns (hallucinations, missing clauses, incorrect citations)
+  - escalation criteria
+  - completion record (training date, audience, owner)
 
 Result: Pass / Fail  
 Evidence ref:  
