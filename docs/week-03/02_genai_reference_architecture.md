@@ -7,7 +7,7 @@ This reference architecture defines the standard enterprise design for **GenAI a
 - information, summaries, drafts, classifications, or recommendations
 - without autonomous execution authority (Tier 1–2)
 
-It maps governance requirements to enforceable technical controls and establishes a baseline that can scale.
+It maps governance requirements to enforceable technical controls and establishes a baseline that can scale into Tier 2/3 deployments.
 
 ---
 
@@ -29,7 +29,13 @@ Orchestration Layer
 
 ↓  
 Execution Plane  
-- LLM Provider (external/internal)  
+- **Internal Model Gateway (Sovereignty Abstraction Layer)**  
+  - Provider abstraction (no direct vendor calls from app code)  
+  - Region routing (EU-only, etc.)  
+  - Model selection + version pinning  
+  - Fallback logic and failover (secondary model / manual mode)  
+  - Audit metadata emission (provider, region, version)  
+- LLM Provider(s) (external/internal; behind gateway)  
 - Vector DB / Search  
 - Document store (contracts, knowledge)  
 
@@ -45,6 +51,19 @@ Operations Layer (always-on)
 - Quality monitoring + drift signals  
 - Cost controls and rate limits  
 - Incident response runbooks  
+
+---
+
+## Why the Internal Model Gateway is Mandatory (EU Enterprise Lens)
+
+In Tier 2/3 systems, application code should not call a provider (e.g., “OpenAI”) directly.
+
+The **Internal Model Gateway** is the sovereignty abstraction layer that enables:
+
+- **Vendor & Model Sovereignty:** switch providers without refactoring core application logic
+- **Jurisdictional compliance:** route processing to EU-only endpoints/models when required
+- **Resilience:** automatic fallback to a secondary model or manual process when APIs fail
+- **Audit defensibility:** capture provider, model version, and region for every high-impact output
 
 ---
 
@@ -84,7 +103,12 @@ Key enforcement points:
 ### 3) Execution Plane
 
 Responsibilities:
-- Model calls (external API / internal model)
+- **Internal Model Gateway (Sovereignty Abstraction Layer)**:
+  - provider abstraction (no direct vendor calls)
+  - region routing and residency constraints
+  - model selection and version pinning
+  - fallback logic and outage handling
+  - emission of sovereignty metadata for audit
 - Retrieval calls to vector DB / search index
 - Document ingestion pipeline (optional):
   - scanning/redaction
@@ -124,12 +148,12 @@ Responsibilities:
   - token usage and cost
   - output anomaly indicators
 - Incident response runbooks:
-  - provider outage
+  - provider outage (gateway failover)
   - hallucination spike
   - data leakage suspicion
 - Change control:
   - prompt version approvals
-  - model version upgrades
+  - model version upgrades (via gateway)
   - retrieval index refresh governance
 
 ---
@@ -143,7 +167,7 @@ Responsibilities:
 ### Hard gates (Week 2)
 - Human oversight enforcement is implemented in Experience + Orchestration
 - Auditability is implemented through Evidence + Audit Layer
-- Vendor sovereignty is implemented via abstraction + fallback (Execution + Ops)
+- Vendor sovereignty is implemented via the **Internal Model Gateway** + fallback (Execution + Ops)
 
 ---
 
@@ -156,5 +180,6 @@ A Tier 2 pilot must have:
 - Defined manual fallback runbook
 - Audit trail for material decisions
 - Monitoring and basic alerting
+- **Internal Model Gateway in front of any model provider calls**
 
 If any are missing, outcome should be **Block / Redesign** until addressed.

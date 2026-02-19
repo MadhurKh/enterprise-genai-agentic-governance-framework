@@ -9,37 +9,38 @@ It prevents “policy-only governance” by ensuring:
 - outputs cannot bypass schema rules
 - autonomy cannot exceed tier boundaries
 - audit capture is always-on
+- safety failures can automatically trigger degradation to safe/manual mode
 
 ---
 
 ## Control Plane Components
 
 ### 1) Policy Engine (Tier-aware)
-A central policy service that evaluates:
 
+A central policy service that evaluates:
 - risk tier (Tier 1/2/3)
 - user role (end-user, SME, auditor)
 - data class (public/internal/confidential/PII)
 - allowed tools/actions (scopes)
 - environment (dev/pilot/prod)
+- jurisdictional constraints (EU-only, etc.)
 
 **Output:** Allow / Deny / Allow-with-conditions (e.g., require approval)
 
-Recommended approach: policy-as-code (OPA-style) but implementation can vary.
+Recommended approach: policy-as-code (OPA-style), though implementation can vary.
 
 ---
 
 ### 2) Tool Registry + Permissions
-A registry describing every tool the system can call:
 
-- tool name
-- purpose
-- input schema
-- output schema
-- risk level
+A registry describing every tool the system can call:
+- tool name, purpose
+- input schema / output schema
+- risk level (read vs write)
 - required approvals
 - rollback strategy
 - data classes allowed
+- sovereignty constraints (if tool calls external services)
 
 Permissions enforce least privilege:
 - Tier 1: no write tools
@@ -49,12 +50,13 @@ Permissions enforce least privilege:
 ---
 
 ### 3) Schema Contracts (Structured Enforcement)
-All material outputs and tool calls must be schema-validated:
 
+All material outputs and tool calls must be schema-validated:
 - model output schema (JSON contract)
 - tool input schema
 - tool output schema
 - evidence schema (citations / references)
+- policy decision schema
 
 If schema validation fails:
 - retry with constrained prompt
@@ -64,6 +66,7 @@ If schema validation fails:
 ---
 
 ### 4) Budget and Rate Controls
+
 Enterprise controls for:
 - max tokens per request
 - max tool calls per session
@@ -74,9 +77,10 @@ Enterprise controls for:
 ---
 
 ### 5) Human Oversight Enforcement (HITL Controls)
+
 Enforces:
 - required checkpoints by tier
-- defined roles:
+- defined oversight roles:
   - end-user verification
   - SME review (sampling or escalation)
   - independent AI auditor (Tier 3 governance)
@@ -88,15 +92,42 @@ Controls include:
 
 ---
 
-### 6) Kill Switch (Mandatory)
-Two levels:
+## Kill Switch as a Circuit Breaker (Mandatory)
 
-1) **Global kill switch:** shuts down tool execution platform-wide
-2) **Use-case kill switch:** disables a specific agent or workflow
+### Why “Circuit Breaker” framing matters
 
-Tier 3 requires:
-- tested rollback paths
-- regular kill-switch drills (e.g., quarterly)
+A manual “Red Button” is necessary but insufficient.
+
+If the system starts failing safety checks, violating policy bounds, or breaching sovereignty constraints, it must be able to **trip automatically** and degrade to a safe state.
+
+### Circuit Breaker Behavior (Minimum)
+
+A Control Plane circuit breaker must support:
+
+- **Automatic trip conditions**
+  - repeated schema validation failures
+  - repeated policy denials on attempted actions
+  - safety filter escalation thresholds
+  - provider outage / timeout thresholds (via Internal Model Gateway)
+  - anomaly detection triggers (optional but recommended)
+
+- **Trip action**
+  - halt tool execution immediately
+  - freeze agent loop (if agentic)
+  - force manual mode or safe fallback pathway
+
+- **Recovery**
+  - controlled reset only after:
+    - incident review (Tier 3)
+    - mitigation applied (prompt/model/tool change)
+    - confirmation test passed
+
+### Manual Red-Button (Still Required)
+
+In addition to automatic circuit breakers:
+- a global kill switch must exist
+- a use-case-specific kill switch must exist
+- Tier 3 requires regular kill-switch testing (e.g., quarterly drills)
 
 ---
 
@@ -104,14 +135,17 @@ Tier 3 requires:
 
 1) Request enters Experience Layer (RBAC, user role, consent)
 2) Orchestrator builds plan / prompt
-3) Before any tool call or action:
+3) Before any model call, tool call, or action:
    - policy evaluation occurs
-   - schema validation occurs
+   - schema validation rules are enforced
 4) If allowed:
    - execution proceeds
 5) If conditional:
    - human approval checkpoint is triggered
-6) Every step writes to Evidence + Audit Layer
+6) If repeated failures occur:
+   - **circuit breaker trips**
+   - system degrades to safe/manual mode
+7) Every step writes to Evidence + Audit Layer
 
 ---
 
@@ -128,12 +162,14 @@ Tier 3 requires:
 - evidence capture (citations/inputs)
 - manual fallback runbook
 - monitoring + alerts baseline
+- circuit breaker for repeated failures (recommended)
 
 ### Tier 3
 - policy engine mandatory
 - tool registry + least privilege mandatory
 - immutable audit logs for actions
-- kill-switch + quarterly drills
+- **automatic circuit breaker + manual red-button**
+- kill-switch drills (e.g., quarterly)
 - independent AI auditor oversight
 - rollback mechanisms for reversible actions
 
@@ -147,5 +183,6 @@ Recommended tests:
 - policy regression tests (allow/deny cases)
 - schema contract tests (valid/invalid payloads)
 - tool permission tests (least privilege)
-- kill-switch drill simulation
-- outage simulation (provider failure → manual mode)
+- circuit breaker trip simulation (auto-trip)
+- kill-switch drill simulation (manual)
+- outage simulation (provider failure → gateway failover → manual mode)

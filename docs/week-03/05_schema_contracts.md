@@ -5,14 +5,12 @@
 Schema contracts make GenAI and Agentic AI systems **auditable, reliable, and enforceable** by design.
 
 They enable:
-
 - **Deterministic integrations:** downstream systems receive structured, validated payloads
 - **Safety controls:** tools/actions cannot run without schema compliance
 - **Auditability:** decisions can be reconstructed from captured artifacts
 - **Consistent governance:** reviewers can score and gate systems using the same evidence structure
 
 Schema contracts are the technical backbone of:
-
 - **Week 2:** scoring anchors, readiness computation, and hard gates
 - **Week 3:** control-plane enforcement (validation + permissions)
 - **Week 4:** worked example evidence capture and remediation plans
@@ -32,24 +30,24 @@ Schema contracts are the technical backbone of:
 
 ## Guiding Rules
 
-1. **Validate everything material**
-   - Model outputs that influence decisions
-   - Any tool call (especially write actions)
-   - Any approval/override decision
+1) **Validate everything material**
+- Model outputs that influence decisions
+- Any tool call (especially write actions)
+- Any approval/override decision
 
-2. **Prefer references + hashes over raw data**
-   - Store evidence pointers and integrity hashes
-   - Avoid dumping PII into logs
+2) **Prefer references + hashes over raw data**
+- Store evidence pointers and integrity hashes
+- Avoid dumping PII into logs
 
-3. **Version your contracts**
-   - Schema changes are governance events
-   - Version in a registry, not in ad-hoc prompts
+3) **Version your contracts**
+- Schema changes are governance events
+- Version in a registry, not in ad-hoc prompts
 
-4. **Fail safe**
-   - Schema validation failure triggers:
-     - constrained retry
-     - degrade-to-manual
-     - escalation (Tier 3)
+4) **Fail safe**
+- Schema validation failure triggers:
+  - constrained retry
+  - degrade-to-manual
+  - escalation (Tier 3)
 
 ---
 
@@ -88,7 +86,7 @@ Validation rules:
 
 ## 2) Model Output Contract (Example)
 
-A structured contract risk output (illustrative):
+A structured contract risk output (illustrative). Includes **Sovereignty Metadata** to prove jurisdictional and version bounds months later.
 
 {
   "overall_risk_score": 0.0,
@@ -103,13 +101,21 @@ A structured contract risk output (illustrative):
     }
   ],
   "confidence": 0.0,
-  "needs_human_review": true
+  "needs_human_review": true,
+  "sovereignty": {
+    "provider": "string",
+    "model_id": "string",
+    "model_version": "string",
+    "region": "string",
+    "processing_boundary": "EU-only|global|on-prem"
+  }
 }
 
 Validation rules:
 - confidence must be between 0.0 and 1.0
 - if severity == high then evidence_refs must be non-empty
 - if tier >= 2 then needs_human_review is required (policy sets threshold)
+- sovereignty.provider/model_id/model_version/region are required for Tier 2–3
 - if schema validation fails:
   - retry with constrained prompt template
   - if still fails: manual mode + incident counter increment
@@ -211,7 +217,6 @@ Validation rules:
 ## Contract Governance
 
 Contracts must be:
-
 - **Versioned:** each schema has an explicit version (e.g., v1, v1.1)
 - **Registered:** maintained in a single registry (repo folder or schema store)
 - **Tested:** validated via CI checks (schema linting + sample payload tests)
