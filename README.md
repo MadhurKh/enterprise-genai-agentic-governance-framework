@@ -2,26 +2,28 @@
 
 This repository contains a practical, enterprise-ready framework for evaluating, governing, and safely operationalizing **Generative AI (GenAI)** and **Agentic AI** systems.
 
-The framework is aligned with **European enterprise governance best practices**, emphasizing risk proportionality, accountability, auditability, controlled/conditional autonomy, and vendor/model sovereignty—rather than experimental or hype-driven AI adoption.
+It is aligned with **European enterprise governance best practices**, emphasizing **risk proportionality, accountability, auditability, sovereignty, and controlled autonomy**—not hype-driven adoption.
 
-It is designed for leaders responsible for **owning AI decisions**, not just building AI solutions.
+**Core principle:** Readiness is not permission.
 
 ---
+
 ## Executive Summary (1-page)
 
-- **Executive Summary PDF** → `docs/executive-summary/Executive_Summary.pdf`
+- Executive Summary PDF: `Executive_Summary.pdf`
+
+---
 
 ## Why This Framework Exists
 
-As GenAI and Agentic AI move from experimentation into core enterprise workflows, organizations face critical questions:
+Most organizations can build a GenAI proof-of-concept. Far fewer can govern it into enterprise production.
 
-- Which AI use cases are acceptable to deploy?
-- How much autonomy is safe—and when?
-- What governance controls are mandatory?
-- Who is accountable when AI decisions go wrong?
-- How do we balance innovation with regulatory and reputational risk?
+The result is **“POC purgatory”**:
+- Risk and Legal teams cannot confidently approve production use
+- Engineering teams lack a clear set of non-negotiable controls
+- Leaders cannot defend decisions during audits or incidents
 
-This framework provides **clear, decision-ready answers** to those questions.
+This framework bridges the gap between innovation and enterprise risk by providing a **repeatable, defensible decision model** for GenAI and Agentic AI adoption.
 
 ---
 
@@ -33,7 +35,6 @@ This framework applies to:
 - Agentic AI systems with bounded or conditional autonomy
 - AI systems influencing decisions, recommendations, or execution
 - Regulated or high-impact business environments
-- Vendor-provided AI services and third-party model integrations
 
 **Out of scope by design:**
 - Research-only prototypes
@@ -43,104 +44,88 @@ This framework applies to:
 
 ---
 
-## Quick Start (How to Use)
+## Repository Structure
 
-Use this framework as an enterprise decision workflow:
+### Week 1 — Foundation (Completed)
+Location: `docs/week-01/`
 
-1) **Classify** the use case into Tier 1/2/3 (risk + autonomy posture)  
-2) **Score** the use case across the 8 dimensions using anchors  
-3) **Compute** the weighted readiness score using the Tier weighting matrix  
-4) **Gate** the outcome using hard governance gates (permission overrides)  
-5) **Decide**: Approve / Pilot with Controls / Block  
-6) **Operationalize** mandatory controls + re-evaluation triggers
+1. Scope and Positioning  
+   `docs/week-01/01_scope_and_positioning.md`
 
----
+2. Governance Philosophy  
+   `docs/week-01/02_governance_philosophy.md`
 
-## Framework Structure
+3. AI Use-Case Risk Classification (Tier 1–3)  
+   `docs/week-01/03_ai_use_case_risk_classification.md`
 
-### 📁 Week 1 — Foundation (Completed)
+4. Evaluation Dimensions (incl. Vendor & Model Sovereignty)  
+   `docs/week-01/04_evaluation_dimensions.md`
 
-Located under `docs/week-01/`
+5. Decision & Approval Logic  
+   `docs/week-01/05_decision_and_approval_logic.md`
 
-1. **Scope and Positioning**  
-   → `docs/week-01/01_scope_and_positioning.md`
-
-2. **Governance Philosophy**  
-   (incl. HITL roles: end-user verification, SME review, independent AI auditor)  
-   → `docs/week-01/02_governance_philosophy.md`
-
-3. **AI Use-Case Risk Classification**  
-   (Tier 1 Assistive / Tier 2 Decision Support / Tier 3 Decision Execution with conditional autonomy)  
-   → `docs/week-01/03_ai_use_case_risk_classification.md`
-
-4. **Evaluation Dimensions**  
-   (8 dimensions incl. **Vendor & Model Sovereignty**)  
-   → `docs/week-01/04_evaluation_dimensions.md`
-
-5. **Decision & Approval Logic**  
-   → `docs/week-01/05_decision_and_approval_logic.md`
-
-6. **Framework Structure & Table of Contents**  
-   → `docs/week-01/06_framework_structure_and_toc.md`
+6. Framework Structure & Table of Contents  
+   `docs/week-01/06_framework_structure_and_toc.md`
 
 ---
 
-### 📁 Week 2 — Scoring & Permission Model (Completed)
+### Week 2 — Scoring and Permission Model (Completed)
+Location: `docs/week-02/`
 
-Located under `docs/week-02/`
+1. Scoring Model Overview  
+   `docs/week-02/01_scoring_model_overview.md`
 
-1. **Scoring Model Overview**  
-   → `docs/week-02/01_scoring_model_overview.md`
+2. Dimension Scoring Anchors  
+   `docs/week-02/02_dimension_scoring_anchors.md`
 
-2. **Dimension-Level Scoring Anchors**  
-   → `docs/week-02/02_dimension_scoring_anchors.md`
+3. Decision Thresholds and Hard Governance Gates  
+   `docs/week-02/03_decision_thresholds_and_gates.md`
 
-3. **Decision Thresholds and Hard Governance Gates**  
-   (readiness score ≠ permission; gates override outcomes)  
-   → `docs/week-02/03_decision_thresholds_and_gates.md`
+4. Minimum Controls by Risk Tier  
+   `docs/week-02/04_minimum_controls_by_risk_tier.md`
 
-4. **Minimum Controls by Risk Tier**  
-   (incl. Tier 3: mandatory quarterly “Red-Button” kill-switch drills)  
-   → `docs/week-02/04_minimum_controls_by_risk_tier.md`
+5. Weighting Matrix  
+   `docs/week-02/05_weighting_matrix.md`
 
-5. **Dimension Weighting Matrix**  
-   → `docs/week-02/05_weighting_matrix.md`
-
-6. **Assessment Questionnaire (Evidence Support)**  
-   → `docs/week-02/06_assessment_questionnaire.md`
+6. Assessment Questionnaire  
+   `docs/week-02/06_assessment_questionnaire.md`
 
 ---
 
-### 📁 Week 3 — Reference Architecture (Planned)
+### Week 3 — Reference Architecture (Completed)
+Location: `docs/week-03/`
 
-Located under `docs/week-03/` (to be added)
+1. Architecture Overview  
+   `docs/week-03/01_architecture_overview.md`
 
-Planned deliverables:
-- Enterprise GenAI reference architecture
-- Agentic AI reference architecture
-- Guardrail & monitoring middleware
-- Schema contracts (inputs, outputs, evidence, logs)
-- Escalation/failure patterns and kill-switch implementation patterns
-- Audit log schema and retention/access patterns
+2. GenAI Reference Architecture (Tier 1–2 baseline)  
+   `docs/week-03/02_genai_reference_architecture.md`
+
+3. Agentic AI Reference Architecture (Tier 2–3)  
+   `docs/week-03/03_agentic_ai_reference_architecture.md`
+
+4. Guardrails and Control Plane (Policy-as-code, Circuit Breaker, Kill Switch)  
+   `docs/week-03/04_guardrails_and_control_plane.md`
+
+5. Schema Contracts (incl. Sovereignty Metadata)  
+   `docs/week-03/05_schema_contracts.md`
+
+6. Audit Logging and Evidence Store (incl. Privacy & Redaction Layer)  
+   `docs/week-03/06_audit_logging_and_evidence_store.md`
 
 ---
 
-### 📁 Week 4 — Worked Example (Completed)
+### Week 4 — Worked Example (Completed)
+Location: `docs/week-04/`
 
-Located under `docs/week-04/`
+1. Worked Example Overview  
+   `docs/week-04/01_worked_example_overview.md`
 
-A full application of the framework to a real GenAI system (**GenAI Contract Risk Analyzer**):
+2. Scorecard and Gates (Tier classification + weighted score)  
+   `docs/week-04/02_scorecard_and_gates.md`
 
-1. **Worked Example Overview**  
-   → `docs/week-04/01_worked_example_overview.md`
-
-2. **Scorecard and Governance Gates**  
-   (Tier 2 classification + weighted calculation + gate outcomes)  
-   → `docs/week-04/02_scorecard_and_gates.md`
-
-3. **Decision and Remediation Plan**  
-   (Pilot controls + P0/P1/P2 roadmap + re-evaluation triggers)  
-   → `docs/week-04/03_decision_and_remediation_plan.md`
+3. Decision and Remediation Plan (P0/P1/P2 roadmap)  
+   `docs/week-04/03_decision_and_remediation_plan.md`
 
 ---
 
@@ -153,6 +138,25 @@ This framework is intended for:
 - Enterprise Architects
 - Risk, Compliance, and Legal stakeholders
 - Consulting and advisory leaders working in regulated environments
+
+---
+
+## How to Use This Framework (Recommended Workflow)
+
+1. **Classify**  
+   Assign the use case to Tier 1, 2, or 3 based on autonomy and impact.
+
+2. **Score**  
+   Evaluate against the 8 dimensions and compute the tier-weighted readiness score.
+
+3. **Gate**  
+   Apply non-negotiable hard governance gates (HITL, auditability, sovereignty, security).
+
+4. **Decide**  
+   Approve / Pilot with Controls / Block & Redesign, and assign accountable owners.
+
+5. **Operationalize**  
+   Implement mandatory controls and test them (including circuit breaker behavior and kill-switch drills for Tier 3).
 
 ---
 
@@ -175,6 +179,5 @@ Created by an enterprise digital transformation leader with hands-on experience 
 
 ## Status
 
-🟢 **Active development**  
-✅ Week 1, Week 2, and Week 4 completed (v1)  
-🟡 Week 3 Reference Architecture planned next
+🟢 **v1 Complete (Weeks 1–4)**  
+Next: **Week 5 — Templates Pack** (scorecards, gate checklists, audit evidence templates, schema examples)
