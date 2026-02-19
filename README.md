@@ -129,6 +129,32 @@ Location: `docs/week-04/`
 
 ---
 
+### Week 5 — Templates Pack (Completed)
+Location: `docs/week-05/`
+
+1. Templates Pack Overview  
+   `docs/week-05/01_templates_pack_overview.md`
+
+2. Use-Case Intake Form  
+   `docs/week-05/02_use_case_intake_form.md`
+
+3. Evaluation Scorecard Template (8 dimensions + weighting + calculation)  
+   `docs/week-05/03_evaluation_scorecard_template.md`
+
+4. Hard Governance Gates Checklist (Permission)  
+   `docs/week-05/04_hard_governance_gates_checklist.md`
+
+5. Minimum Controls Checklist by Risk Tier  
+   `docs/week-05/05_minimum_controls_checklist_by_tier.md`
+
+6. Audit Evidence Packet Template  
+   `docs/week-05/06_audit_evidence_packet_template.md`
+
+7. Change Control and Re-Certification Template  
+   `docs/week-05/07_change_control_and_recertification.md`
+
+---
+
 ## Intended Audience
 
 This framework is intended for:
@@ -179,5 +205,5 @@ Created by an enterprise digital transformation leader with hands-on experience 
 
 ## Status
 
-🟢 **v1 Complete (Weeks 1–4)**  
-Next: **Week 5 — Templates Pack** (scorecards, gate checklists, audit evidence templates, schema examples)
+🟢 **v1 Complete (Weeks 1–5)**  
+Next: **Week 6 — Operating Model + RACI + Governance Cadence** (how enterprises run this framework)
