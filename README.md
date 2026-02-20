@@ -8,9 +8,9 @@ It is aligned with **European enterprise governance best practices**, emphasizin
 
 ---
 
-## Executive Summary (1-page)
+## Executive Summary (2-pages)
 
-- Executive Summary PDF: `Executive_Summary.pdf`
+- Executive Summary PDF: `Executive_Summary_v2.pdf`
 
 ---
 
@@ -46,8 +46,9 @@ This framework applies to:
 
 ## Repository Structure
 
-### Week 1 — Foundation (Completed)
-Location: `docs/week-01/`
+### 📁 Week 1 — Foundation (Completed)
+
+Located under `docs/week-01/`
 
 1. Scope and Positioning  
    `docs/week-01/01_scope_and_positioning.md`
@@ -69,8 +70,9 @@ Location: `docs/week-01/`
 
 ---
 
-### Week 2 — Scoring and Permission Model (Completed)
-Location: `docs/week-02/`
+### 📁 Week 2 — Scoring and Permission Model (Completed)
+
+Located under `docs/week-02/`
 
 1. Scoring Model Overview  
    `docs/week-02/01_scoring_model_overview.md`
@@ -92,8 +94,9 @@ Location: `docs/week-02/`
 
 ---
 
-### Week 3 — Reference Architecture (Completed)
-Location: `docs/week-03/`
+### 📁 Week 3 — Reference Architecture (Completed)
+
+Located under `docs/week-03/`
 
 1. Architecture Overview  
    `docs/week-03/01_architecture_overview.md`
@@ -115,8 +118,9 @@ Location: `docs/week-03/`
 
 ---
 
-### Week 4 — Worked Example (Completed)
-Location: `docs/week-04/`
+### 📁 Week 4 — Worked Example (Completed)
+
+Located under `docs/week-04/`
 
 1. Worked Example Overview  
    `docs/week-04/01_worked_example_overview.md`
@@ -129,8 +133,9 @@ Location: `docs/week-04/`
 
 ---
 
-### Week 5 — Templates Pack (Completed)
-Location: `docs/week-05/`
+### 📁 Week 5 — Templates Pack (Completed)
+
+Located under `docs/week-05/`
 
 1. Templates Pack Overview  
    `docs/week-05/01_templates_pack_overview.md`
@@ -155,8 +160,9 @@ Location: `docs/week-05/`
 
 ---
 
-### Week 6 — Operating Model (Completed)
-Location: `docs/week-06/`
+### 📁 Week 6 — Operating Model (Completed)
+
+Located under `docs/week-06/`
 
 1. Operating Model Overview  
    `docs/week-06/01_operating_model_overview.md`
@@ -175,6 +181,147 @@ Location: `docs/week-06/`
 
 6. Governance Metrics and KPIs  
    `docs/week-06/06_governance_metrics_and_kpis.md`
+
+---
+
+### 📁 Week 7 — Starter Kit (Completed)
+
+Located under `docs/week-07/`
+
+1. Adoption Guide (30/60/90 day rollout + Tier 1 fast-track)
+   `docs/week-07/01_adoption_guide.md`
+
+2. Filled Use-Case Intake Example (Contract Risk Analyzer)
+   `docs/week-07/02_filled_use_case_intake_example.md`
+
+3. Filled Scorecard Example (evidence maturity + weighted math)
+   `docs/week-07/03_filled_scorecard_example.md`
+
+4. Filled Hard Governance Gates Checklist Example (Pass with conditions)
+   `docs/week-07/04_filled_gates_checklist_example.md`
+
+5. Policy Exception Register Example
+   `docs/week-07/05_exception_register_example.md`
+
+6. Re-Certification Example (Context Drift)
+   `docs/week-07/06_recertification_example_context_drift.md`
+
+---
+
+### 📁 Week 8 — Enforcement Patterns (Policy, Gateway, Circuit Breaker) (Completed)
+
+Located under `docs/week-08/`
+
+1. **Policy-as-Code Blueprint**  
+   Defines pre-flight / in-flight / post-flight policy checks, policy input contract, and enforcement approach  
+   → `01_policy_as_code_blueprint.md`
+
+2. **Internal Model Gateway Pattern**  
+   Enterprise vendor abstraction for sovereignty routing, metadata capture, and fallback behavior  
+   → `02_internal_model_gateway_pattern.md`
+
+3. **Circuit Breaker and Safe Fallback**  
+   Auto-trip circuit breaker vs manual kill switch, degrade modes, trigger thresholds (safety + cost)  
+   → `03_circuit_breaker_and_safe_fallback.md`
+
+4. **Reference Implementation Checklist**  
+   Tier-wise “Definition of Done” for governance + enforcement capabilities  
+   → `04_reference_implementation_checklist.md`
+
+5. **Validation Test Plan**  
+   Test cases covering policy enforcement, sovereignty, redaction, replay, and jailbreak attempts  
+   → `05_validation_test_plan.md`
+
+---
+
+### 📁 Week 9 — Executive + Audit Pack (Completed)
+
+Located under `docs/week-09/`
+
+1. **Executive Operating Standard (One-Pager)**  
+   Board-ready summary: tiering, readiness vs permission, fast-track for Tier 1, mandatory evidence  
+   → `01_executive_operating_standard_one_pager.md`
+
+2. **AI Governance Board Pack (Outline)**  
+   Slide outline for governance boards including runtime risk signals, drift, and ROI realization  
+   → `02_ai_governance_board_pack_outline.md`
+
+3. **Controls Crosswalk (EU Enterprise Assurance)**  
+   Maps EU governance themes to framework controls and evidence artifacts  
+   → `03_controls_crosswalk_eu_enterprise_assurance.md`
+
+4. **Audit-Ready Evidence Index**  
+   Checklist to assemble audit packets (incl. jailbreak test results and privacy/redaction evidence)  
+   → `04_audit_ready_evidence_index.md`
+
+5. **Adoption in 2 Weeks (Quickstart)**  
+   Minimum Viable Governance rollout plan with Day 0 executive sponsorship  
+   → `05_adoption_in_2_weeks_quickstart.md`
+
+---
+
+### 📁 Week 10 — Reference Implementation Starter Kit (Completed)
+
+Located under `docs/week-10/`
+
+1. **Reference Implementation Kit Overview**  
+   How Week 10 artifacts map to enforcement, operations, and audit requirements  
+   → `01_reference_implementation_kit_overview.md`
+
+2. **Policy-as-Code (Rego Samples)**  
+   Practical enforcement rules including Tier 2/3 fail-closed posture  
+   → `01_policy_as_code_rego_samples.md`
+
+3. **Model Gateway OpenAPI Contract**  
+   Vendor abstraction contract including 429 throttling and Retry-After expectations  
+   → `02_model_gateway_openapi_contract.yaml`
+
+4. **Gateway Routing Table Example**  
+   Routing logic including 429/quota fallback patterns and governance logging guidance  
+   → `03_model_gateway_routing_table_example.md`
+
+5. **Circuit Breaker Runbook**  
+   Auto-trip + manual kill switch operational procedure (includes cost breach triggers)  
+   → `04_circuit_breaker_runbook.md`
+
+6. **Alerts and SLO Examples**  
+   Monitoring expectations aligned to governance KPIs and incident thresholds  
+   → `05_alerts_and_slos_examples.md`
+
+7. **Audit Event Schema Examples (JSONL)**  
+   Replayable, privacy-first logging examples including `redaction_summary` and `correlation_id` chaining  
+   → `06_audit_event_schema_examples.jsonl`
+
+8. **Tiered Release Readiness Checklist**  
+   Production readiness criteria by tier (Tier 3 includes threat model / pen-test expectation)  
+   → `07_release_readiness_checklist_tiered.md`
+
+---
+
+### 📁 Week 11 — Implementation Packaging + “MVI” Walkthroughs (Completed)
+
+Located under `docs/week-11/`
+
+1. **Implementation Packaging Guide (Where Artifacts Live)**  
+   Standard folder structure, System of Record guidance, and cross-referencing rules  
+   → `01_implementation_packaging_guide.md`
+
+2. **Minimum Viable Implementation Walkthrough (Tier 2)**  
+   End-to-end steps from intake → permission → pilot → ops → audit packet  
+   → `02_mvi_walkthrough_tier2.md`
+
+3. **Minimum Viable Implementation Walkthrough (Tier 3)**  
+   End-to-end enforcement flow including policy-as-code, fail-closed, breaker + quarterly drills  
+   → `03_mvi_walkthrough_tier3.md`
+
+4. **Engineering Repo Starter Templates**  
+   - Policy change governance template → `04_POLICY_template.md`  
+   - Evidence capture guide template → `05_EVIDENCE_template.md`  
+   - Incident response runbook template → `06_RUNBOOK_template.md`
+
+5. **Executive Visuals Blueprint (Carousel Outline)**  
+   Ready structure for a LinkedIn / internal comms PDF carousel summarizing the framework  
+   → `07_executive_visuals_blueprint.md`
 
 ---
 
@@ -228,5 +375,5 @@ Created by an enterprise digital transformation leader with hands-on experience 
 
 ## Status
 
-🟢 **v1 Complete (Weeks 1–6)**  
-Next: **Week 7 — Starter Kit (Filled Examples + Adoption Guide)**
+🟢 **v1 Complete (Weeks 1–7)**  
+Next: **Week 8 — Implementation Blueprint (Policy-as-Code + Model Gateway + Circuit Breaker patterns)**

@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Internal Model Gateway API
+  version: 0.1.0
+  description: >
+    A vendor-agnostic model gateway that enforces sovereignty routing, fallback patterns,
+    audit metadata capture, and policy-as-code decisions. Intended for Tier 2/3 systems.
+
+servers:
+  - url: https://model-gateway.enterprise.local
+
+paths:
+  /v1/generate:
+    post:
+      summary: Generate text via enterprise-approved models
+      operationId: generateText
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRequest'
+      responses:
+        '200':
+          description: Generation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateResponse'
+        '400':
+          description: Validation error
+        '403':
+          description: Denied by policy (fail-closed for Tier 2/3)
+        '429':
+          description: >
+            Rate limited or token quota exceeded. The gateway may throttle, queue, or (if policy permits)
+            fail over to an approved secondary model. For Tier 2/3, if no compliant fallback exists,
+            the request must fail-closed (deny) rather than proceed without governance.
+          headers:
+            Retry-After:
+              description: >
+                Suggested wait time (in seconds) before retrying. Returned when throttling is applied.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: rate_limited
+                  message:
+                    type: string
+                    example: Token quota exceeded. Please retry after 30 seconds.
+                  policy_decision_id:
+                    type: string
+                    example: pol-9b31c
+                  safe_degrade_mode:
+                    type: string
+                    example: throttle_then_manual
+        '503':
+          description: Gateway or provider unavailable
+
+components:
+  schemas:
+    GenerateRequest:
+      type: object
+      required: [use_case_id, tier, region_constraint, prompts, controls]
+      properties:
+        use_case_id:
+          type: string
+          description: Stable identifier for audit correlation
+        tier:
+          type: integer
+          enum: [1,2,3]
+        region_constraint:
+          type: string
+          description: E.g., EU_ONLY, GLOBAL, CLIENT_SPECIFIC
+        data_classification:
+          type: string
+          description: Public/Internal/Confidential/Restricted
+        prompts:
+          type: object
+          required: [system, user]
+          properties:
+            system: { type: string }
+            user: { type: string }
+        tools_requested:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              permission: { type: string, enum: [read, write] }
+        controls:
+          type: object
+          required: [policy_decision_id, audit_required, redaction_required]
+          properties:
+            policy_decision_id: { type: string }
+            audit_required: { type: boolean }
+            redaction_required: { type: boolean }
+            breaker_enabled: { type: boolean }
+        fallback:
+          type: object
+          properties:
+            allow_failover:
+              type: boolean
+            safe_degrade_mode:
+              type: string
+              description: manual_mode/read_only/limited_mode/shadow_mode/fail_closed
+        runtime_limits:
+          type: object
+          properties:
+            max_tokens: { type: integer }
+            budget_usd_per_request: { type: number }
+            timeout_ms: { type: integer }
+
+    GenerateResponse:
+      type: object
+      required: [output, audit]
+      properties:
+        output:
+          type: object
+          required: [text, format]
+          properties:
+            text: { type: string }
+            format: { type: string, description: plain/json }
+            structured_json:
+              type: object
+              description: Optional structured output if format=json
+        audit:
+          type: object
+          required: [provider, region, model, model_version, policy_decision_id, request_id, redaction_status]
+          properties:
+            request_id: { type: string }
+            policy_decision_id: { type: string }
+            provider: { type: string }
+            region: { type: string }
+            model: { type: string }
+            model_version: { type: string }
+            latency_ms: { type: integer }
+            token_usage:
+              type: object
+              properties:
+                prompt_tokens: { type: integer }
+                completion_tokens: { type: integer }
+                total_tokens: { type: integer }
+            redaction_status:
+              type: string
+              description: redacted|not_required|failed
+            evidence_refs:
+              type: array
+              items: { type: string }
